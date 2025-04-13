@@ -812,6 +812,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             ];
          
+     // Función para aleatorizar un array
+    function shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array;
+    }
  // Función para renderizar preguntas
  const renderQuestions = (questionsToRender) => {
     questionsContainer.innerHTML = '';
@@ -956,7 +964,9 @@ toggleAnswersBtn.addEventListener('click', function() {
 
     this.textContent = isHidden ? 'Ocultar Todas las Respuestas' : 'Mostrar Todas las Respuestas';
 });
-
+// Inicialización: Aleatorizar las preguntas antes de renderizarlas
+const shuffledQuestions = shuffleArray([...questions]);
+renderQuestions(shuffledQuestions);
 // Inicialización
-renderQuestions(questions);
+
 });
