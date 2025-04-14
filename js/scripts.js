@@ -940,7 +940,7 @@ searchInput.addEventListener('input', function() {
     const filteredQuestions = searchTerm
         ? questions.filter(question =>
             question.text.toLowerCase().includes(searchTerm) ||
-            question.explanation.toLowerCase().includes(searchTerm) ||
+            (question.explanation || '').toLowerCase().includes(searchTerm) || // Corrección aquí
             question.options.some(opt => opt.toLowerCase().includes(searchTerm)) ||
             question.number.toString().includes(searchTerm)
         )
